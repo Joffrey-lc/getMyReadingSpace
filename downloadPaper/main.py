@@ -2,7 +2,7 @@ import glob
 from utils4paperreading import *
 
 # 目标路径
-cwd_path = r'E:\学习\阅读\面向智能反射面数能系统的波形设计\IRS\~~~Stacked RIS'
+cwd_path = r'E:\学习\项目\时延敏感的空地通算网络关键技术与应用\材料准备_LC\论文材料'
 
 mymkdirs(os.path.join(cwd_path, '文章备份'))
 with open(cwd_path+'\\mypaper.txt', 'r') as f:
@@ -14,7 +14,7 @@ with open(cwd_path+'\\mypaper.txt', 'r') as f:
         filename = checkfilename((str(firstauthor)+'++'+str(citationCount)+'+'+str(papername)).replace(' ', '_'))
         # DownOneFile('https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber='+str(paper_id)+'&ref=', cwd_path+'\\'+filename+'.pdf')
         downsize = DownOneFile('https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber='+str(paper_id), cwd_path+'\\'+filename+'.pdf')
-        if downsize / 1024 / 1024 < 0.3:  # 下载的有问题
+        if downsize / 1024 / 1024 < 0.15:  # 下载的有问题
             fail_paper.append('https://ieeexplore.ieee.org/document/' + str(paper_id))
         for filename in glob.glob(cwd_path+'/*.pdf'):
             shutil.copy(src=os.path.join(cwd_path, filename), dst=os.path.join(cwd_path, '文章备份'))

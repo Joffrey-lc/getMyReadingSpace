@@ -12,8 +12,8 @@ import requests
 from bs4 import BeautifulSoup
 import glob
 
-proxies = {'https': 'http://127.0.0.1:7890'}
-# proxies = {}
+# proxies = {'https': 'http://127.0.0.1:7890'}
+proxies = {}
 
 
 def checkfilename(filename: str):
@@ -55,7 +55,10 @@ def GetPaperInfo(srcUrl):
         Info = r.text[start_n:end_n]
         citationCount = Info.split('"citationCountPaper":')[1].split(',')[0]
         papername = Info.split('"formulaStrippedArticleTitle":"')[1].split('"')[0]
-        publicationDate = Info.split('"publicationDate":"')[1].split('"')[0]
+        try:
+            publicationDate = Info.split('"publicationDate":"')[1].split('"')[0]
+        except:
+            publicationDate = 'Early Access'
         firstauthor = Info.split('"authors":[{"name":"')[1].split('"')[0]
         conferenceOrJounal = Info.split('"publicationTitle":"')[1].split('"')[0]
         return citationCount, papername, publicationDate, firstauthor, conferenceOrJounal, file_size_str

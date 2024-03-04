@@ -3,7 +3,7 @@ import time
 # SCI-HUB下载要关掉梯子
 from utils4paperreading import *
 # 目标路径
-cwd_path = r'E:\学习\阅读\面向智能反射面数能系统的波形设计\IRS\~~~Stacked RIS'
+cwd_path = r'E:\学习\项目\6G移动通信系统中的能量可持续理论与技术\准备材料_LC\提交材料\论文材料'
 
 
 mymkdirs(os.path.join(cwd_path, '文章备份'))
@@ -18,7 +18,7 @@ with open(cwd_path+'\\mypaper.txt', 'r') as f:
         # DownOneFile('https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber='+str(paper_id)+'&ref=', cwd_path+'\\'+filename+'.pdf')
         downurl = search_article_scihub('https://ieeexplore.ieee.org/document/'+str(paper_id))
         if downurl == '':
-            print('未找到相关论文，请重新搜索！:https://ieeexplore.ieee.org/document/%s', str(paper_id))
+            print('未找到相关论文，请重新搜索！:https://ieeexplore.ieee.org/document/'+ str(paper_id))
             fail_paper.append('https://ieeexplore.ieee.org/document/'+str(paper_id))
         else:
             # time.sleep(3)
